@@ -25,7 +25,7 @@ contract Flash {
         _;
     }
 
-    function sendEtherAndGetPoint() public payable {
+    function getPoint() public payable {
         require(msg.value == 1 ether, "You must send exactly 1 ether");
         points[msg.sender] += 1;
         emit PointAwarded(msg.sender, points[msg.sender]);
