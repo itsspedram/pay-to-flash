@@ -1,68 +1,18 @@
 <html lang="en">
   <head>
+    <script src=" https://cdn.jsdelivr.net/npm/web3@4.6.0/dist/web3.min.js "></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      @font-face {
-        font-family: chocolate-bar;
-        src: url("fonts/ChocolateBar.otf");
-      }
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: chocolate-bar;
-      }
-      .main-dashoiie {
-        width: 100%;
-        height: 100vh;
-        background: url("./img/dashoiie.png");
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        position: relative;
-      }
-      .main-dashoiie button {
-        position: absolute;
-        top: 33%;
-        left: 38%;
-        padding: 15px;
-        background: none;
-        width: 62px;
-        cursor: pointer;
-        border: none;
-      }
-      .main-dashoiie h1 {
-        position: absolute;
-        text-align: center;
-        top: 12%;
-        left: 16%;
-        font-size: 60px;
-        transform: rotateZ(-33deg);
-        color: #b7c2c4;
-        filter: drop-shadow(5px 5px 10px #000000);
-      }
-      #shit {
-        position: absolute;
-    top: 51%;
-    left: 43%;
-    border-bottom: 86px solid transparent;
-    border-left: 25px solid transparent;
-    border-right: 23px solid transparent;
-    height: 4px;
-    width: 149px;
-    border-radius: 65%;
-    background: none;
-    background-repeat: no-repeat;
-    background-position: -110px -48px;
-    filter: drop-shadow(5px 5px 10px #000000);
-
-      }
-      .shit::after{
-       
-        content: "";
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
       }
     </style>
+    <title>Document</title>
+<link rel="stylesheet" href="style.css">
   </head>
   <body>
     <audio id="myAudio">
@@ -71,20 +21,18 @@
         type="audio/mp3"
       />
     </audio>
+    
     <div class="main-dashoiie">
-      <button onclick="playAudio()" type="button"></button>
+      <button id="flash" class="flash" onclick="playAudio()" type="button"></button>
+      <div class="text-right p-2">
+      <button id="connector">logout</button>
+      </div>
+
       <h1>Flush Your Wallet<br />To Save My Tank!</h1>
       <div id="shit"></div>
     </div>
 
-    <script>
-      var x = document.getElementById("myAudio");
-      var shit = document.getElementById("shit")
+    <script src='./main.js'></script>
 
-      function playAudio() {
-        x.play();
-        shit.style.backgroundImage = "url('./img/this-whirl-takes-in-everything.gif')";
-      }
-    </script>
   </body>
 </html>
