@@ -1,4 +1,63 @@
 // Initialize web3 with MetaMask's provider
+
+function populateLeaderboardTable(data) {
+  const tbody = document.querySelector("tbody");
+  tbody.innerHTML = ""; // Clear existing rows
+
+  data.forEach((item) => {
+    const row = document.createElement("tr");
+    row.classList.add("odd:bg-white", "even:bg-gray-100");
+
+    const addressCell = document.createElement("td");
+    addressCell.classList.add(
+      "px-6",
+      "py-4",
+      "whitespace-nowrap",
+      "text-sm",
+      "font-medium",
+      "text-gray-800"
+    );
+    addressCell.textContent = item.address;
+
+    const countCell = document.createElement("td");
+    countCell.classList.add(
+      "px-6",
+      "py-4",
+      "whitespace-nowrap",
+      "text-sm",
+      "text-gray-800"
+    );
+    countCell.textContent = item.count;
+
+    const coinsCell = document.createElement("td");
+    coinsCell.classList.add(
+      "px-6",
+      "py-4",
+      "whitespace-nowrap",
+      "text-sm",
+      "text-gray-800"
+    );
+    coinsCell.textContent = item.coins;
+
+    row.appendChild(addressCell);
+    row.appendChild(countCell);
+    row.appendChild(coinsCell);
+
+    tbody.appendChild(row);
+  });
+}
+const leaderBoardData = [
+  {
+    address: "#999999",
+    count: 12,
+    coins: 15,
+  },
+  {
+    address: "#1222222",
+    count: 6,
+    coins: 18,
+  },
+];
 if (typeof window.ethereum !== "undefined") {
   console.log("MetaMask is installed!");
 
@@ -71,6 +130,8 @@ if (typeof window.ethereum !== "undefined") {
   }
 
   document.addEventListener("DOMContentLoaded", () => {
+    populateLeaderboardTable(leaderBoardData);
+
     const connectorElement = document.getElementById("connector");
     const flashBtn = document.getElementById("flash");
     let accounts;
@@ -87,11 +148,10 @@ if (typeof window.ethereum !== "undefined") {
         connectorElement.textContent = "Disconnect Wallet";
         connectorElement.onclick = disconnectWallet;
         flashBtn.removeAttribute("disabled");
-
       } else {
         connectorElement.className = "bg-green-300 p-4 rounded-lg shadow-md";
         connectorElement.textContent = "Connect Wallet";
-        flashBtn.setAttribute("disabled","disabled");
+        flashBtn.setAttribute("disabled", "disabled");
         connectorElement.onclick = walletContent;
       }
     }
@@ -114,8 +174,7 @@ if (typeof window.ethereum !== "undefined") {
   async function disconnectWallet() {
     try {
       await window.ethereum.request({ method: "eth_sign", params: [""] });
-    updateConnectorState();
-
+      updateConnectorState();
     } catch (error) {
       console.error("Failed to disconnect wallet:", error);
     }
