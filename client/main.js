@@ -185,10 +185,10 @@ if (typeof window.ethereum !== "undefined") {
 
 // list
 
-// leader board
+// leader board X
 // top 5
 // timer flush
-// git hub visibility
+// git hub visibility X
 // token icon
 // better back ground
 // landing
