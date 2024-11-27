@@ -14,18 +14,23 @@ export default function Header() {
         <nav className="hidden md:block">
           <ul className="flex space-x-8">
             <li>
-              <Link href="#" className="text-white/70 hover:text-white transition-colors">
-                Home
+              <Link href="#game" className="text-white/70 hover:text-white transition-colors">
+                Game
               </Link>
             </li>
             <li>
-              <Link href="#" className="text-white/70 hover:text-white transition-colors">
-                Tokenomics
+              <Link href="#achievements" className="text-white/70 hover:text-white transition-colors">
+                Achievements
               </Link>
             </li>
             <li>
-              <Link href="#" className="text-white/70 hover:text-white transition-colors">
-                Roadmap
+              <Link href="#leaderboard" className="text-white/70 hover:text-white transition-colors">
+                Leaderboard
+              </Link>
+            </li>
+            <li>
+              <Link href="#impact" className="text-white/70 hover:text-white transition-colors">
+                Impact
               </Link>
             </li>
           </ul>
@@ -34,7 +39,7 @@ export default function Header() {
           <a href='#' className="text-white/70 hover:text-white">
             <TwitterIcon className="h-5 w-5" />
           </a>
-          <a   href='https://github.com/itsspedram/pay-to-flash' className="text-white/70 hover:text-white">
+          <a href='https://github.com/itsspedram/pay-to-flash' className="text-white/70 hover:text-white">
             <GithubIcon className="h-5 w-5" />
           </a>
         </div>
