@@ -1,7 +1,8 @@
+const { subtask } = require("hardhat/config");
+const { TASK_COMPILE_SOLIDITY_GET_COMPILER_INPUT } = require("hardhat/builtin-tasks/task-names");
 require("@nomicfoundation/hardhat-toolbox");
-require("dotenv").config(); // For loading environment variables from a .env file
-require("hardhat-gas-reporter"); // For gas usage reporting
-require("@nomiclabs/hardhat-etherscan"); // For contract verification
+require("dotenv").config();
+require("hardhat-gas-reporter");
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -17,6 +18,10 @@ module.exports = {
   networks: {
     hardhat: {
       chainId: 1337,
+      mining: {
+        auto: true,
+        interval: 0
+      }
     },
     sepolia: {
       url: process.env.SEPOLIA_URL || "",
