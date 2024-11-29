@@ -55,8 +55,11 @@ export default function ToiletGame() {
   const handleWalletConnect = async () => {
     if (typeof window.ethereum !== 'undefined') {
       try {
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
         await window.ethereum.request({ method: 'eth_requestAccounts' })
         setWalletConnected(true)
+        const walletAddress = accounts[0];
+      console.log("Connected wallet address:", walletAddress);
       } catch (error) {
         console.error('Failed to connect wallet:', error)
       }
@@ -110,6 +113,8 @@ export default function ToiletGame() {
     from: { opacity: 0 },
     delay: 500,
   })
+
+  
 
   return (
     <animated.div style={fadeIn} className="w-full max-w-4xl px-4">
