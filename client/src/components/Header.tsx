@@ -11,29 +11,25 @@ export default function Header() {
         >
           🚽 FlushCoin
         </Link>
-        <nav className="hidden md:block">
-          <ul className="flex space-x-8">
-            <li>
-              <Link href="#game" className="text-white/70 hover:text-white transition-colors">
-                Game
-              </Link>
-            </li>
-            <li>
-              <Link href="#achievements" className="text-white/70 hover:text-white transition-colors">
-                Achievements
-              </Link>
-            </li>
-            <li>
-              <Link href="#leaderboard" className="text-white/70 hover:text-white transition-colors">
-                Leaderboard
-              </Link>
-            </li>
-            <li>
-              <Link href="#impact" className="text-white/70 hover:text-white transition-colors">
-                Impact
-              </Link>
-            </li>
-          </ul>
+        <nav className="hidden md:flex space-x-6">
+          <Link href="/" className="text-white/70 hover:text-white transition-colors">
+            Home
+          </Link>
+          <Link href="/achievements" className="text-white/70 hover:text-white transition-colors">
+            Achievements
+          </Link>
+          <Link href="/leaderboard" className="text-white/70 hover:text-white transition-colors">
+            Leaderboard
+          </Link>
+          <Link href="/impact" className="text-white/70 hover:text-white transition-colors">
+            Impact
+          </Link>
+          <Link href="/about" className="text-white/70 hover:text-white transition-colors">
+            About Us
+          </Link>
+          <Link href="/contact" className="text-white/70 hover:text-white transition-colors">
+            Contact
+          </Link>
         </nav>
         <div className="flex items-center gap-4">
           <a href='#' className="text-white/70 hover:text-white">
