@@ -82,13 +82,13 @@ export default function RoadmapPreview() {
 
         <div className="mt-12 text-center">
           <Link href="/roadmap" passHref>
-            <motion.a
+            <motion.p
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-block px-8 py-3 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-blue-500/20 hover:from-purple-500/30 hover:via-pink-500/30 hover:to-blue-500/30 rounded-full text-white font-bold transition-colors duration-300 border border-purple-500/20"
             >
               View Full Roadmap
-            </motion.a>
+            </motion.p>
           </Link>
         </div>
       </div>
