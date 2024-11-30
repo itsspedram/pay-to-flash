@@ -9,9 +9,9 @@ import Image from 'next/image'
 import Achievements from './Achievements'
 import Leaderboard from './Leaderboard'
 import Streak from './Streak'
-import { CuteToilet } from './CuteToilet'
 import SocialShare from './SocialShare'
 import EnvironmentalImpact from './EnvironmentalImpact'
+import RoadmapPreview from './RoadmapPreview'
 
 // Mock data for achievements and leaderboard
 const mockAchievements = [
@@ -131,11 +131,12 @@ export default function ToiletGame() {
           whileHover={{ scale: 1.02 }}
           transition={{ duration: 0.3 }}
         >
-          <Image
-            src={require("../pics/t.jpg")}
+          {/* <Image
+            src={require("../pics/t.jpgg")}
             alt="Luxury Toilet"
             className="w-full h-full object-cover"
-          />          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          />           */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
           
           <div className="absolute inset-x-0 bottom-0 flex flex-col items-center gap-4 p-8">
             <WalletButton
@@ -172,6 +173,8 @@ export default function ToiletGame() {
       <Leaderboard entries={mockLeaderboard} />
       <SocialShare flushCount={flushCount} />
       <EnvironmentalImpact totalDonation={totalDonation} />
+      <RoadmapPreview />
+
 
       <audio ref={audioRef} src="../audio/toilet-flush-quite-aggressive.mp3" />
     </animated.div>
