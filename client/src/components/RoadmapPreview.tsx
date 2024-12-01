@@ -19,7 +19,7 @@ const roadmapItems = [
   },
   {
     title: "Utility",
-    description: "Games & Features",
+    description: "Games & and other Features",
     explanation: "Earn while you... well, you know. Games that make every second count!",
     icon: Gamepad2,
     position: "top"
