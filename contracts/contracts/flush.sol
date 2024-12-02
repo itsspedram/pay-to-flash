@@ -237,6 +237,7 @@ contract Flush {
     function claimTokens() public {
         uint256 userPoints = users[msg.sender].points;
         require(userPoints > 0, "You have no points to claim tokens");
+        require(userPoints >= 100, "You must have at least 100 points to claim tokens");
         
         uint256 tokenAmount = userPoints * TOKENS_PER_POINT;
         require(ChillThrone.balanceOf(address(this)) >= tokenAmount, "Insufficient ChillThrone balance in contract");
