@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
-import {getPoint} from '../utils/flashContract'
-import { useState } from 'react'
+import {getPoint,fetchUserData} from '../utils/flashContract'
+import { useEffect, useState } from 'react'
 import { useAccount } from 'wagmi';
 interface FlushButtonProps {
   onClick: () => void
@@ -10,8 +10,13 @@ interface FlushButtonProps {
 export default function FlushButton({ onClick, disabled }: FlushButtonProps) {
   const { address, isConnected } = useAccount();
   const [loading, setLoading] = useState(false);  
+
+  useEffect(()=>{
+    fetchUserData(address);
+  },[])
   
   const handleGetPoint = async () => {
+
     try {
       await getPoint(address, setLoading);
     } catch (err) {

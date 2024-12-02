@@ -38,7 +38,7 @@ export default function RoadmapPreview() {
     <section className="w-full max-w-4xl mb-16 relative overflow-hidden">
       <div className="relative p-4 md:p-8 lg:p-12">
         <h2 className="text-3xl font-bold mb-8 md:mb-12 text-center bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 text-transparent bg-clip-text">
-          ChillFlush Roadmap 2024-2025
+          Pay to Flush Roadmap 2024-2025
         </h2>
         
         <div className="relative">

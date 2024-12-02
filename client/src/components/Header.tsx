@@ -41,7 +41,7 @@ export default function Header() {
           href="/" 
           className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 text-transparent bg-clip-text"
         >
-          🚽 Pay to Flush
+          🚽 The Flush
         </Link>
         <nav className="hidden md:flex space-x-6">
           {menuItems.map((item) => (

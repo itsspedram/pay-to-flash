@@ -1,11 +1,17 @@
 import { motion } from 'framer-motion'
+import { fetchUserData } from '../utils/flashContract'
+import { useAccount } from 'wagmi'
 
 interface WalletButtonProps {
   connected: boolean
   onClick: () => void
 }
 
+
+
 export default function WalletButton({ connected, onClick }: WalletButtonProps) {
+const { address } = useAccount();
+
   return (
     <motion.button
       whileHover={{ scale: 1.05 }}
@@ -19,7 +25,7 @@ export default function WalletButton({ connected, onClick }: WalletButtonProps) 
         }
         transition-colors duration-300
       `}
-      onClick={onClick}
+      onClick={()=>{onClick(),fetchUserData(address)}}  
     >
       {connected ? '🧻 Wallet Connected' : '🚰 Connect Wallet'}
     </motion.button>

@@ -10,7 +10,7 @@ const roadmapItems = [
     title: "Launch & Infrastructure",
     icon: Rocket,
     items: [
-      { text: "Token Launch (ChillFlush Token)", icon: "✨" },
+      { text: "Token Launch (Pay to Flush Token)", icon: "✨" },
       { text: "Smart Contract Audit (No leaks in our code!)", icon: "🔐" },
       { text: "Website Launch with Interactive Toilet Game", icon: "🌐" },
       { text: "Initial DEX Listing (Flush your savings here!)", icon: "💼" },
@@ -71,7 +71,7 @@ const RoadmapPage: NextPage = () => {
       <main className="flex-grow flex flex-col items-center justify-center p-4 relative">
         <div className="w-full max-w-4xl">
           <h1 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 text-transparent bg-clip-text">
-            🚽 ChillFlush Roadmap 2024-2025
+            🚽 Pay to Flush Roadmap 2024-2025
           </h1>
           <div className="relative">
             {/* Vertical line */}
@@ -154,7 +154,7 @@ const RoadmapPage: NextPage = () => {
 
           <div className="mt-12 text-center">
             <p className="text-white/80 text-lg italic">
-              Remember, in the world of ChillFlush, every flush counts! 
+              Remember, in the world of Pay to Flush, every flush counts! 
               Are you ready to join the revolution and make your toilet time profitable?
             </p>
           </div>

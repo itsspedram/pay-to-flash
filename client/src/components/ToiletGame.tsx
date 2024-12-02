@@ -12,6 +12,8 @@ import Streak from './Streak'
 import SocialShare from './SocialShare'
 import EnvironmentalImpact from './EnvironmentalImpact'
 import RoadmapPreview from './RoadmapPreview'
+import useGameStore from '@/store/store'
+import { useAccount } from 'wagmi'
 
 // Mock data for achievements and leaderboard
 const mockAchievements = [
@@ -29,11 +31,16 @@ const mockLeaderboard = [
 export default function ToiletGame() {
   const [walletConnected, setWalletConnected] = useState(false)
   const [flushing, setFlushing] = useState(false)
-  const [flushCount, setFlushCount] = useState(0)
+  const [flushPoints, setFlushPoints] = useState(0)
   const [currentStreak, setCurrentStreak] = useState(0)
   const [bestStreak, setBestStreak] = useState(0)
   const [totalDonation, setTotalDonation] = useState(0)
   const audioRef = useRef<HTMLAudioElement>(null)
+
+  const {address}= useAccount()
+
+  const points = useGameStore((state) => state.points);
+  const totalFlushes = useGameStore((state) => state.totalFlushes);
 
   useEffect(() => {
     // Check if the user has flushed today
@@ -48,9 +55,16 @@ export default function ToiletGame() {
     }
 
     setBestStreak(Number(localStorage.getItem('bestStreak') || '0'))
-    setFlushCount(Number(localStorage.getItem('flushCount') || '0'))
     setTotalDonation(Number(localStorage.getItem('totalDonation') || '0'))
   }, [])
+
+
+  useEffect(() => {
+    if (address) {
+    setFlushPoints(points)
+
+    }
+  }, [address,points,totalFlushes]);
 
   const handleWalletConnect = async () => {
     if (typeof window.ethereum !== 'undefined') {
@@ -80,8 +94,8 @@ export default function ToiletGame() {
     }
 
     // Update flush count and streak
-    const newFlushCount = flushCount + 1
-    setFlushCount(newFlushCount)
+    const newFlushCount = flushPoints + 1
+    setFlushPoints(newFlushCount)
     localStorage.setItem('flushCount', newFlushCount.toString())
 
     const newStreak = currentStreak + 1
@@ -114,7 +128,7 @@ export default function ToiletGame() {
     delay: 500,
   })
 
-  
+  {console.log("=========",points)}
 
   return (
     <animated.div style={fadeIn} className="w-full max-w-4xl px-4">
@@ -149,7 +163,7 @@ export default function ToiletGame() {
       </div>
 
       <AnimatePresence>
-        {flushCount > 0 && (
+   
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -158,20 +172,19 @@ export default function ToiletGame() {
           >
             <div className="inline-block px-6 py-3 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
               <p className="text-2xl font-bold text-white mb-2">
-                Flush Count: {flushCount}
+                Flush Points: {flushPoints?flushPoints:0}
               </p>
               <p className="text-white/70">
-                You've earned {flushCount} FLC (≈ {(flushCount * 0.01).toFixed(3)} ETH)
+                You've earned {flushPoints?flushPoints:0} FLC (≈ {flushPoints&&(flushPoints * 0.01).toFixed(3)} ETH)
               </p>
             </div>
           </motion.div>
-        )}
       </AnimatePresence>
 
       <Streak currentStreak={currentStreak} bestStreak={bestStreak} />
       <Achievements achievements={mockAchievements} />
       <Leaderboard entries={mockLeaderboard} />
-      <SocialShare flushCount={flushCount} />
+      <SocialShare flushCount={flushPoints} />
       <EnvironmentalImpact totalDonation={totalDonation} />
       <RoadmapPreview />
 
