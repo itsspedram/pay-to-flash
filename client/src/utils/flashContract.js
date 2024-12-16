@@ -43,6 +43,8 @@ export async function getPoint(address, setLoading) {
 // Function to fetch user data
 export async function fetchUserData(userAddress) {
   // Connect to Ethereum
+  if (!userAddress) return console.log('Wallet address is required')
+    
   const provider = new BrowserProvider(window.ethereum);
   const signer = await provider.getSigner();
 
